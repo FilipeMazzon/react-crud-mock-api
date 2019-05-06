@@ -3,9 +3,9 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import Modal from './GenericModal.js';
 import {updateProductInApi} from '../../actions/products'
-import ModalDelete from '../modalDelete'
+import ModalDelete from '../container/modalDelete'
 
-const ProductList = ({products=[],refreshWithAPI=f=>f}) => {
+const ProductList = ({products = [], refreshWithAPI = f => f}) => {
     const columns = [{
         Header: "id",
         accessor: "id"
@@ -35,12 +35,8 @@ const ProductList = ({products=[],refreshWithAPI=f=>f}) => {
         )
     }*/];
     useEffect(() => {
-        //refreshWithAPI();
-      /*  (async () => {
-
-        })();*/
-    }, []);
-    console.log(products);
+       refreshWithAPI();
+    },[refreshWithAPI]);
     return (
         <div>
             <ReactTable

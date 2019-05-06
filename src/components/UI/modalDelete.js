@@ -25,6 +25,7 @@ const GenericModal = ({
             alert(e);
         }
     };
+
     return (
         <div>
             <Form inline onSubmit={(e) => e.preventDefault()}>

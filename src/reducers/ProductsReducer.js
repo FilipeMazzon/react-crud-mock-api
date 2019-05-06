@@ -1,7 +1,5 @@
 import {ADD_PRODUCT, CHANGE_PRODUCTS, DELETE_PRODUCT, EDIT_PRODUCT} from '../constants/products';
-import {FETCH_PRODUCTS,CANCEL_FETCHING} from '../constants/fetching.json'
-import {combineReducers} from "redux";
-export const object = (state = [], action) => {
+export const products = (state = [], action) => {
     switch (action.type) {
         case ADD_PRODUCT:
             return [
@@ -19,26 +17,9 @@ export const object = (state = [], action) => {
                 }
             });
         case CHANGE_PRODUCTS:
+            console.log(action.payload);
             return action.payload;
         default:
             return state
     }
 };
-
-export const fetching = (state=false, action) => {
-    switch(action.type) {
-        case FETCH_PRODUCTS :
-            return true;
-        case CANCEL_FETCHING :
-            return false;
-        case CHANGE_PRODUCTS :
-            return false;
-        default:
-            return state
-    }
-};
-
-export const productsReducer = combineReducers({
-    fetching,
-    object
-});

@@ -4,7 +4,7 @@ import {Reducers} from './reducers';
 
 const consoleMessages = store => next => action => {
     console.groupCollapsed(`dispatching action => ${action.type}`)
-    const result = next(action)
+    const result = next(action);
     const statusNow = store.getState();
     console.log(`the state now is ${JSON.stringify(statusNow, null, 2)}`);
     console.groupEnd();

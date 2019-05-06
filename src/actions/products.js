@@ -41,18 +41,20 @@ export const addProductInAPI = product => async dispatch => {
     }
 };
 export const getProductFromAPI = async dispatch => {
-    try {
+    try{
         const response = await axios.get(url);
-        dispatch(
-            changeProducts(response.data)
-        )
-    } catch (err) {
-        dispatch(addError(err.message))
+        const data = response.data;
+         dispatch({
+            type:CHANGE_PRODUCTS,
+            payload:data
+        })
+    }catch (err) {
+        dispatch(addError(err.message));
     }
 };
 export const updateProductInApi = data => async dispatch => {
     const newUrl = `${url}${data.id}`;
-    console.log("here i get" + newUrl + "the data" + JSON.stringify(data));
+    console.log(data);
     try {
         await axios.put(newUrl, data);
         dispatch(
@@ -64,4 +66,3 @@ export const updateProductInApi = data => async dispatch => {
         )
     }
 };
-

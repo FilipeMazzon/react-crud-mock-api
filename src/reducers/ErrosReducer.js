@@ -1,4 +1,4 @@
-import {ADD_ERROR,CLEAR_ERROR} from '../constants/errors';
+import {ADD_ERROR,CLEAR_ERROR,CLEAN_ALL_ERRORS} from '../constants/errors';
 
 export const Errors = (state = [], action) => {
     switch(action.type) {
@@ -9,6 +9,8 @@ export const Errors = (state = [], action) => {
             ];
         case CLEAR_ERROR :
             return state.filter((message, i) => i !== action.payload);
+        case CLEAN_ALL_ERRORS:
+            return [];
         default:
             return state
     }

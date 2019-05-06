@@ -13,6 +13,7 @@ const GenericModal = ({
         show: false,
         unmountOnClose: true
     });
+
     const [modalData, setModalData] = useState(data);
     const toggle = () => {
         setModal({
