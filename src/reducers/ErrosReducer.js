@@ -7,7 +7,7 @@ export const Errors = (state = [], action) => {
                 ...state,
                 action.payload
             ];
-        case CLEAR_ERROR :
+        case CLEAR_ERROR:
             return state.filter((message, i) => i !== action.payload);
         case CLEAN_ALL_ERRORS:
             return [];

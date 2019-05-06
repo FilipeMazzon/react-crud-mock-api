@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import Modal from './GenericModal.js';
-import {updateProductInApi} from '../../actions/products'
+import Modal from '../container/GenericModal.js';
+import {updateProductInApi,deleteProductFromAPI} from '../../actions/products'
 import ModalDelete from '../container/modalDelete'
 
 const ProductList = ({products = [], refreshWithAPI = f => f}) => {
@@ -27,13 +27,13 @@ const ProductList = ({products = [], refreshWithAPI = f => f}) => {
                    action={updateProductInApi}
             />
         )
-    }/*, {
+    }, {
         Header: '',
         Cell: row => (
             <ModalDelete data={row.original}
-                         action={deleteProduct}/>
+                         action={deleteProductFromAPI}/>
         )
-    }*/];
+    }];
     useEffect(() => {
        refreshWithAPI();
     },[refreshWithAPI]);

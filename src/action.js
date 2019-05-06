@@ -24,14 +24,4 @@ export const updateProduct = data => {
     })
 };
 
-export const deleteProduct = data => {
-    const newUrl = `${url}${data.id}`;
-    return new Promise(async (resolve, reject) => {
-        try {
-            await axios.delete(newUrl);
-            resolve();
-        } catch (e) {
-            reject(e)
-        }
-    })
-};
+

@@ -1,9 +1,10 @@
-import ModalDeletee from '../UI/modalDelete';
+import ModalDelete from '../UI/modalDelete';
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state, props) => {
     return {
-        Products: state.Products,
+        className:props.className,
+        data: props.data,
         action: props.action
     }
 };
@@ -18,4 +19,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalDeletee)
+export default connect(mapStateToProps, mapDispatchToProps)(ModalDelete)

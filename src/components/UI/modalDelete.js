@@ -4,8 +4,9 @@ import {Button, Modal, ModalHeader, ModalFooter, Form} from 'reactstrap';
 const GenericModal = ({
                           className = "className", action = async f => f,
                           data = {
-                              id: 0
-                          }
+                              id: 0,
+                              name:"null"
+                          },onSubmit=f=>f
                       }) => {
     const [modal, setModal] = useState({
         show: false
@@ -19,7 +20,7 @@ const GenericModal = ({
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            await action(modalData);
+            await onSubmit(action,modalData)
             toggle();
         } catch (e) {
             alert(e);

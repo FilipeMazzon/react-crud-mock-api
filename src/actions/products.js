@@ -30,7 +30,6 @@ export const editProducts = product =>
 export const addProductInAPI = product => async dispatch => {
     try {
         const result = await axios.post(url, product);
-        console.log(result);
         dispatch(
             addProducts(result.data)
         )
@@ -41,26 +40,38 @@ export const addProductInAPI = product => async dispatch => {
     }
 };
 export const getProductFromAPI = async dispatch => {
-    try{
+    try {
         const response = await axios.get(url);
         const data = response.data;
-         dispatch({
-            type:CHANGE_PRODUCTS,
-            payload:data
+        dispatch({
+            type: CHANGE_PRODUCTS,
+            payload: data
         })
-    }catch (err) {
+    } catch (err) {
         dispatch(addError(err.message));
     }
 };
 export const updateProductInApi = data => async dispatch => {
     const newUrl = `${url}${data.id}`;
-    console.log(data);
     try {
         await axios.put(newUrl, data);
         dispatch(
             editProducts(data)
         )
     } catch (e) {
+        dispatch(
+            addError(e.message)
+        )
+    }
+};
+export const deleteProductFromAPI = data =>async dispatch=>{
+    const newUrl = `${url}${data.id}`;
+    try{
+        await axios.delete(newUrl);
+        dispatch(
+            deleteProducts(data)
+        )
+    }catch (e) {
         dispatch(
             addError(e.message)
         )
