@@ -1,14 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import ReactTable from 'react-table';
-import 'react-table/react-table.css'
-import axios from 'axios';
-import {updateProduct, deleteProduct} from '../action';
-import {url} from '../config/url.json'
-import Modal from './UI/GenericModal.js'
-import ModalDelete from './modalDelete'
+import 'react-table/react-table.css';
+import Modal from './GenericModal.js';
+import {updateProductInApi} from '../../actions/products'
+import ModalDelete from '../modalDelete'
 
-const ProductList = () => {
-    const [products, setProducts] = useState([]);
+const ProductList = ({products=[],refreshWithAPI=f=>f}) => {
     const columns = [{
         Header: "id",
         accessor: "id"
@@ -27,27 +24,21 @@ const ProductList = () => {
             <Modal data={row.original}
                    buttonLabel="edit"
                    title="Edit Product"
-                   action={updateProduct}
+                   action={updateProductInApi}
             />
         )
-    }, {
+    }/*, {
         Header: '',
         Cell: row => (
             <ModalDelete data={row.original}
                          action={deleteProduct}/>
         )
-    }];
+    }*/];
     useEffect(() => {
-        (async () => {
-            try {
-                const result = await axios(
-                    url
-                );
-                setProducts(result.data);
-            } catch (e) {
-                console.error(e);
-            }
-        })();
+        //refreshWithAPI();
+      /*  (async () => {
+
+        })();*/
     }, []);
     console.log(products);
     return (

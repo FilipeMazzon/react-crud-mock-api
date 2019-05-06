@@ -10,7 +10,7 @@ import './App.css';
 
 import Main from './views/main';
 import NotFound from './views/NotFound'
-import ShowErros from './components/'
+import ShowErrors from './components/container/showErrors'
 
 const Routes = ({products = [], Errors = []}) => {
     return (

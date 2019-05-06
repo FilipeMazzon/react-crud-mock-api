@@ -7,7 +7,7 @@ const GenericModal = ({
                               name: "",
                               prize: 0,
                               description: ""
-                          }
+                          }, onSubmit = f => f
                       }) => {
     const [modal, setModal] = useState({
         show: false,
@@ -28,7 +28,7 @@ const GenericModal = ({
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            await action(modalData);
+            await onSubmit(action,modalData);
             toggle();
         } catch (e) {
             alert(e);

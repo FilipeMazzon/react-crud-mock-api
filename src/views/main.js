@@ -1,7 +1,7 @@
 import React from 'react';
-import Modal from '../components/GenericModal';
-import {insertProduct} from "../action";
-import ProductList from "../components/ProductList";
+import Modal from '../components/container/GenericModal';
+import {addProductInAPI} from "../actions/products";
+import ProductList from "../components/container/ProductList";
 
 function main() {
     return (
@@ -9,7 +9,7 @@ function main() {
             <div className="container align-content-center">
                 <Modal buttonLabel="Register"
                        title="Register Modal"
-                       action={insertProduct}/>
+                       action={addProductInAPI}/>
             </div>
             <ProductList/>
         </div>

@@ -23,7 +23,8 @@ const handleError = error => {
 window.addEventListener("error", handleError);
 window.addEventListener("options", handleError);
 store.subscribe(saveState);
-
+window.React = React;
+window.store = store;
 ReactDOM.render(
     <Provider store={store}>
         <App/>

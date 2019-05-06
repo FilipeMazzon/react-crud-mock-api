@@ -26,7 +26,6 @@ export const updateProduct = data => {
 
 export const deleteProduct = data => {
     const newUrl = `${url}${data.id}`;
-    console.log(newUrl);
     return new Promise(async (resolve, reject) => {
         try {
             await axios.delete(newUrl);
