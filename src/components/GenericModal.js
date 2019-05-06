@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Form, FormGroup} from 'reactstrap';
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter, Form} from 'reactstrap';
 
 const GenericModal = ({
                           buttonLabel = "button", className = "className", action = async f => f, title = "Modal Title",

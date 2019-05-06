@@ -1,21 +1,29 @@
 import React from 'react';
-import ProductList from './components/ProductList'
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch
+} from "react-router-dom";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Modal from './components/GenericModal';
-import {insertProduct} from './action';
 import './App.css';
 
-function App() {
+import Main from './views/main';
+import NotFound from './views/NotFound'
+import ShowErros from './components/'
+
+const Routes = ({products = [], Errors = []}) => {
     return (
         <div>
-            <div className="container align-content-center">
-                <Modal buttonLabel="Register"
-                       title="Register Modal"
-                       action={insertProduct}/>
-            </div>
-            <ProductList/>
+            <Router>
+                {(Errors) ? <ShowErrors/> : null}
+                <Switch>
+                    <Route exact path="/" component={Main}/>
+                    <Route component={NotFound}/>
+                </Switch>
+            </Router>
         </div>
-    );
-}
+    )
+};
 
-export default App;
+export default Routes;

@@ -24,15 +24,17 @@ const ProductList = () => {
     }, {
         Header: '',
         Cell: row => (
-            <div>
-                <Modal data={row.original}
-                       buttonLabel="edit"
-                       title="Edit Product"
-                       action={updateProduct}
-                />
-                <ModalDelete data={row.original}
-                action={deleteProduct}/>
-            </div>
+            <Modal data={row.original}
+                   buttonLabel="edit"
+                   title="Edit Product"
+                   action={updateProduct}
+            />
+        )
+    }, {
+        Header: '',
+        Cell: row => (
+            <ModalDelete data={row.original}
+                         action={deleteProduct}/>
         )
     }];
     useEffect(() => {
